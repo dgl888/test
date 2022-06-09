@@ -1,4 +1,5 @@
 import { keybindings } from "./keybindings.js";
+import { resizeWindow } from "./windowSizing.js";
 
 var app = {
 	//initial variables
@@ -70,5 +71,6 @@ window.onload = function(){
 };
  export {
 	 app,
-	 keybindings
+	 keybindings,
+	 resizeWindow
  }

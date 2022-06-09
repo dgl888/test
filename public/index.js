@@ -1,7 +1,11 @@
-import { keybindings } from './js/app.js'
-import { app } from './js/app.js'
+import { keybindings } from './js/app.js';
+import { app } from './js/app.js';
+import { resizeWindow } from './js/app.js';
 
-app.onInit = function(){
+app.onInit = function() {
+
+    resizeWindow();
+
     this.nodes.push({
         id : 'ball',
         x  : 100,
@@ -31,14 +35,16 @@ app.onInit = function(){
     });
 
     document.addEventListener("keydown", keybindings);
+    window.addEventListener('resizeWindow', resizeWindow);
 };
 
-app.onUpdate = function(time){
-    this.getNode('paddleOne').y++;
+app.onUpdate = function(time) {
+
+
 
     if(Math.cos(this.timestamp / 100) > 0){
         this.getNode('ball').direction = -1;
-    }else{
+    } else {
         this.getNode('ball').direction = 1;
     }
 
