@@ -11,7 +11,7 @@
 
 		app.onInit = function(){
 			this.nodes.push({
-				id : 'red-box',
+				id : 'ball',
 				x  : 100,
 				y  : 0,
 				width  : 100,
@@ -21,7 +21,16 @@
 			});
 
 			this.nodes.push({
-				id : 'black-box',
+				id : 'paddleOne',
+				x  : 50,
+				y  : 0,
+				width  : 150,
+				height : 150,
+				color  : 'black'
+			});
+
+			this.nodes.push({
+				id : 'paddleTwo',
 				x  : 50,
 				y  : 0,
 				width  : 150,
@@ -31,15 +40,15 @@
 		};
 
 		app.onUpdate = function(time){
-			this.getNode('black-box').y++;
+			this.getNode('paddleOne').y++;
 
 			if(Math.cos(this.timestamp / 100) > 0){
-				this.getNode('red-box').direction = -1;
+				this.getNode('ball').direction = -1;
 			}else{
-				this.getNode('red-box').direction = 1;
+				this.getNode('ball').direction = 1;
 			}
 
-			this.getNode('red-box').x+=this.getNode('red-box').direction;
+			this.getNode('ball').x+=this.getNode('ball').direction;
 		};
 	</script>
 </body>
