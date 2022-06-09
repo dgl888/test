@@ -1,3 +1,5 @@
+import { keybindings } from "./keybindings.js";
+
 var app = {
 	//initial variables
 	canvas  : null,
@@ -66,3 +68,7 @@ var app = {
 window.onload = function(){
 	app.init();
 };
+ export {
+	 app,
+	 keybindings
+ }

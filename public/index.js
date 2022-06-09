@@ -1,4 +1,5 @@
-import { keybindings } from './js/app'
+import { keybindings } from './js/app.js'
+import { app } from './js/app.js'
 
 app.onInit = function(){
     this.nodes.push({
