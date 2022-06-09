@@ -5,9 +5,9 @@ import { resizeWindow } from './js/app.js';
 app.onInit = function() {
 
     //Variables
-    const paddleY = app.height/2;
     const paddleWidth = 50;
     const paddleHeight = 200;
+    const paddleY = app.height/2 - paddleHeight/2;
 
     //Initialize the window size
     resizeWindow();
@@ -41,7 +41,7 @@ app.onInit = function() {
     });
 
     document.addEventListener("keydown", keybindings);
-    window.addEventListener('resizeWindow', resizeWindow);
+    window.addEventListener("resize", resizeWindow);
 };
 
 app.onUpdate = function(time) {
