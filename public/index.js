@@ -4,6 +4,7 @@ import { resizeWindow } from './js/app.js';
 
 app.onInit = function() {
 
+    //Initialize the window size
     resizeWindow();
 
     this.nodes.push({
