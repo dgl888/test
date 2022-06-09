@@ -4,6 +4,11 @@ import { resizeWindow } from './js/app.js';
 
 app.onInit = function() {
 
+    //Variables
+    const paddleY = app.height/2;
+    const paddleWidth = 50;
+    const paddleHeight = 200;
+
     //Initialize the window size
     resizeWindow();
 
@@ -19,19 +24,19 @@ app.onInit = function() {
 
     this.nodes.push({
         id : 'paddleOne',
-        x  : 50,
-        y  : 0,
-        width  : 150,
-        height : 150,
+        x  : 0,
+        y  : paddleY,
+        width  : paddleWidth,
+        height : paddleHeight,
         color  : 'black'
     });
 
     this.nodes.push({
         id : 'paddleTwo',
-        x  : 50,
-        y  : 0,
-        width  : 150,
-        height : 150,
+        x  : app.width - paddleWidth,
+        y  : paddleY,
+        width  : paddleWidth,
+        height : paddleHeight,
         color  : 'black'
     });
 
