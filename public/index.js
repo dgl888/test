@@ -5,7 +5,7 @@ import { resizeWindow } from './js/app.js';
 app.onInit = function() {
 
     //Variables
-    const paddleWidth = 50;
+    const paddleWidth = 40;
     const paddleHeight = 200;
     const paddleY = app.height/2 + paddleHeight/2;
     const ballWidth = 50;
@@ -50,14 +50,18 @@ app.onInit = function() {
 };
 
 app.onUpdate = function(time) {
+    let ball = this.getNode('ball');
+    let paddle1 = this.getNode('paddleOne');
+    let paddle2 = this.getNode('paddleTwo');
+
+    //Check if paddle1 is in bounds.
+    if(paddle1.y < 0 ) paddle1.y = 0;
+    if(paddle1.y >= this.height - paddle1.height) paddle1.y = this.height - paddle1.height;
+
+    //Check if paddle2 is in bounds.
+    if(paddle2.y < 0) paddle2.y = 0;
+    if(paddle2.y >= this.height - paddle2.height) paddle2.y = this.height - paddle2.height
 
 
 
-    if(Math.cos(this.timestamp / 100) > 0){
-        this.getNode('ball').direction = -1;
-    } else {
-        this.getNode('ball').direction = 1;
-    }
-
-    this.getNode('ball').x+=this.getNode('ball').direction;
 };
