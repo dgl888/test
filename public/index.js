@@ -10,7 +10,7 @@ app.onInit = function() {
     const paddleY = app.height/2 - paddleHeight/2;
     const ballWidth = 50;
     const ballHeight = 50;
-    const ballRadius = 5;
+    const ballRadius = 20;
 
 
 
@@ -19,6 +19,8 @@ app.onInit = function() {
 
     this.nodes.push({
         id : 'ball',
+        x : canvas.width/2,
+        y : canvas.height/2,
         width  : ballWidth,
         height : ballHeight,
         color  : 'blue',
