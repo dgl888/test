@@ -9,6 +9,7 @@ export function resizeWindow(e) {
     let width = window.innerWidth;
     let canvas = document.getElementById('canvas');
     let paddleTwo = app.getNode('paddleTwo');
+    let ball = app.getNode('ball');
 
     canvas.width = width - widthMargin;
     canvas.height = heigth - heightMargin;
@@ -17,4 +18,5 @@ export function resizeWindow(e) {
 
     //Move the second paddle to the proper location.
     paddleTwo.x = app.width - paddleTwo.width;
+    ball.x = app.width/2 - ball.width/2;
 }
