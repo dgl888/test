@@ -8,18 +8,21 @@ app.onInit = function() {
     const paddleWidth = 50;
     const paddleHeight = 200;
     const paddleY = app.height/2 - paddleHeight/2;
+    const ballWidth = 50;
+    const ballHeight = 50;
+    const ballRadius = 5;
+
+
 
     //Initialize the window size
     resizeWindow();
 
     this.nodes.push({
         id : 'ball',
-        x  : 100,
-        y  : 0,
-        width  : 100,
-        height : 100,
-        color  : 'red',
-        direction : 0
+        width  : ballWidth,
+        height : ballHeight,
+        color  : 'blue',
+        r: ballRadius,
     });
 
     this.nodes.push({
