@@ -1,5 +1,6 @@
 import { keybindings } from "./keybindings.js";
 import { resizeWindow } from "./windowSizing.js";
+import { collisionCheck } from "./collisionCheck.js";
 
 var app = {
 	//initial variables
@@ -72,5 +73,6 @@ window.onload = function(){
  export {
 	 app,
 	 keybindings,
-	 resizeWindow
+	 resizeWindow,
+	 collisionCheck
  }

@@ -1,6 +1,7 @@
 import { keybindings } from './js/app.js';
 import { app } from './js/app.js';
 import { resizeWindow } from './js/app.js';
+import { collisionCheck } from './js/collision.js';
 
 app.onInit = function() {
 
@@ -61,7 +62,5 @@ app.onUpdate = function(time) {
     //Check if paddle2 is in bounds.
     if(paddle2.y < 0) paddle2.y = 0;
     if(paddle2.y >= this.height - paddle2.height) paddle2.y = this.height - paddle2.height
-
-
 
 };
