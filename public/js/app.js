@@ -1,6 +1,7 @@
 import { keybindings } from "./keybindings.js";
 import { resizeWindow } from "./windowSizing.js";
-import { collisionCheck } from "./collisionCheck.js";
+import { collisionCheck } from "./collision.js";
+import { initBall } from "./initBall.js";
 
 var app = {
 	//initial variables
@@ -74,5 +75,6 @@ window.onload = function(){
 	 app,
 	 keybindings,
 	 resizeWindow,
-	 collisionCheck
+	 collisionCheck,
+	 initBall
  }
