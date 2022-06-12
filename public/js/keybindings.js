@@ -18,11 +18,11 @@ export let keybindings = function (e) {
     else if(e.keycode === 40 || e.which == 40) {
         app.getNode('paddleTwo').y += paddleDisplacement;
     }
-    //Commands for pausing (esc) and resetting (space) the game
+    //Commands for pausing (space) and resetting (esc) the game
     else if(e.keycode === 27 || e.which == 27) {
-        // app.pause();
+        app.reset();
     }
     else if(e.keycode === 32 || e.which == 32) {
-        // app.reset();
+        app.pause();
     }
 }
