@@ -4,7 +4,6 @@ import { resizeWindow } from './js/app.js';
 import { collisionCheck } from './js/collision.js';
 import { initBall } from "./js/initBall.js";
 
-
 app.onInit = function() {
 
     //Variables
@@ -24,11 +23,10 @@ app.onInit = function() {
         y : canvas.height/2 + ballHeight/2,
         width  : ballWidth,
         height : ballHeight,
-        color  : 'blue',
+        color  : 'red',
         r: ballRadius,
     });
     initBall(this);
-
 
     this.nodes.push({
         id : 'paddleOne',
@@ -48,6 +46,15 @@ app.onInit = function() {
         color  : 'black'
     });
 
+    this.nodes.push({
+        id : 'scoreOne',
+        score : 0
+    });
+
+    this.nodes.push({
+        id : 'scoreTwo',
+        score : 0
+    });
 
     document.addEventListener("keydown", keybindings);
     window.addEventListener("resize", resizeWindow);
@@ -57,6 +64,8 @@ app.onUpdate = function(time) {
     let ball = this.getNode('ball');
     let paddle1 = this.getNode('paddleOne');
     let paddle2 = this.getNode('paddleTwo');
+    let score1 = this.getNode("scoreOne");
+    let score2 = this.getNode("scoreTwo");
 
     //Determine the side the ball is on. True is left, False is right.
     let whichSide = ball.x < (this.width / 2);
@@ -82,11 +91,21 @@ app.onUpdate = function(time) {
 
         ball.directionX = direction * ball.speed * Math.cos(angle);
         ball.directionY = direction * ball.speed * Math.sin(angle);
-        //ball.speed += 1;
     }
 
+    //Inverse y direction if ball hits top or bottom border.
     if(ball.y - ball.r <= 0 || ball.y + ball.r >= this.height) {
         ball.directionY = -ball.directionY;
     }
 
+    //Check if ball has reached the enemy team's goal. If so, add points and reset ball position.
+    if((ball.x + ball.r) > this.width) {
+        score1.score += 1;
+        console.log('Player 1 Score: ' + score1.score);
+        initBall(this);
+    } else if((ball.x - ball.r) < 0) {
+        score2.score += 1;
+        console.log('Player 2 Score: ' + score2.score);
+        initBall(this);
+    }
 };
