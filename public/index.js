@@ -109,3 +109,18 @@ app.onUpdate = function(time) {
         initBall(this);
     }
 };
+
+app.pause = function() {
+    if(this.idStop) {
+        cancelAnimationFrame(this.idStop);
+        this.idStop = null;
+    } else {
+        this.idStop = window.requestAnimationFrame(this.render.bind(this));
+    }
+};
+
+app.reset = function() {
+    cancelAnimationFrame(this.idStop);
+    window.requestAnimationFrame(this.render.bind(this));
+    this.onInit();
+};
