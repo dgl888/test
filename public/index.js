@@ -85,4 +85,8 @@ app.onUpdate = function(time) {
         //ball.speed += 1;
     }
 
+    if(ball.y - ball.r <= 0 || ball.y + ball.r >= this.height) {
+        ball.directionY = -ball.directionY;
+    }
+
 };
