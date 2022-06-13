@@ -1,4 +1,5 @@
 import {app} from './app.js'
+import { getNodes } from './getNodes.js';
 
 //I added a margin so that the screen wouldn't have a vertical scroll.
 const heightMargin = 40;
@@ -8,8 +9,8 @@ export function resizeWindow(e) {
     let heigth = window.innerHeight;
     let width = window.innerWidth;
     let canvas = document.getElementById('canvas');
-    let paddleTwo = app.getNode('paddleTwo');
-    let ball = app.getNode('ball');
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
+
 
     canvas.width = width - widthMargin;
     canvas.height = heigth - heightMargin;

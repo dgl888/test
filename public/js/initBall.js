@@ -1,4 +1,5 @@
 import { app } from './app.js';
+import { getNodes } from './getNodes.js';
 
 const minStart = -10;
 const maxStart = 10;
@@ -10,7 +11,7 @@ const maxRange = 2;
 export function initBall(app) {
     const midWidth = app.width/2;
     const midHeight = app.height/2;
-    const ball = app.getNode('ball');
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
     let ballDirX = Math.random() * (maxStart - minStart) + minStart;
     let ballDirY = Math.random() * (maxStart - minStart) + minStart;
     let outOfRangeCheck = ballDirX > minRange && ballDirX < maxRange;

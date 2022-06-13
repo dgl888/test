@@ -3,10 +3,10 @@ import { keybindings } from './js/app.js';
 import { resizeWindow } from './js/app.js';
 import { collisionCheck } from './js/collision.js';
 import { initBall } from "./js/initBall.js";
+import { getNodes } from "./js/getNodes.js";
+
 
 app.onInit = function() {
-
-    //Variables
     const paddleWidth = 40;
     const paddleHeight = 200;
     const paddleY = app.height/2 + paddleHeight/2;
@@ -14,7 +14,6 @@ app.onInit = function() {
     const ballHeight = 50;
     const ballRadius = 20;
 
-    //Initialize the window size
     resizeWindow();
 
     this.nodes.push({
@@ -63,29 +62,20 @@ app.onInit = function() {
 };
 
 app.onUpdate = function(time) {
-    let ball = this.getNode('ball');
-    let paddle1 = this.getNode('paddleOne');
-    let paddle2 = this.getNode('paddleTwo');
-    let score1 = this.getNode("scoreOne");
-    let score2 = this.getNode("scoreTwo");
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
 
-    //Determine the side the ball is on. True is left, False is right.
     let whichSide = ball.x < (this.width / 2);
-    let paddle = whichSide ? paddle1 : paddle2;
+    let paddle = whichSide ? paddleOne : paddleTwo;
 
-    //Check if paddle1 is in bounds.
-    if(paddle1.y < 0 ) paddle1.y = 0;
-    if(paddle1.y >= this.height - paddle1.height) paddle1.y = this.height - paddle1.height;
+    if(paddleOne.y < 0 ) paddleOne.y = 0;
+    if(paddleOne.y >= this.height - paddleOne.height) paddleOne.y = this.height - paddleOne.height;
 
-    //Check if paddle2 is in bounds.
-    if(paddle2.y < 0) paddle2.y = 0;
-    if(paddle2.y >= this.height - paddle2.height) paddle2.y = this.height - paddle2.height;
+    if(paddleTwo.y < 0) paddleTwo.y = 0;
+    if(paddleTwo.y >= this.height - paddleTwo.height) paddleTwo.y = this.height - paddleTwo.height;
 
-    //Begin movement of ball
     ball.x += ball.directionX;
     ball.y += ball.directionY;
 
-    //Check to see if the ball and paddle collide. If they do, create an angle for the ball to rebound from.
     if(collisionCheck(ball, paddle)) {
         let collissionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);
         let angle = collissionPoint * (Math.PI/4);
@@ -95,42 +85,37 @@ app.onUpdate = function(time) {
         ball.directionY = direction * ball.speed * Math.sin(angle);
     }
 
-    //Inverse y direction if ball hits top or bottom border.
     if(ball.y - ball.r <= 0 || ball.y + ball.r >= this.height) {
         ball.directionY = -ball.directionY;
     }
 
-    //Check if ball has reached the enemy team's goal. If so, add points and reset ball position.
     if((ball.x + ball.r) > this.width) {
-        score1.score += 1;
-        console.log('Player 1 Score: ' + score1.score);
+        scoreOne.score += 1;
+        console.log('Player 1 Score: ' + scoreOne.score);
         initBall(this);
     } else if((ball.x - ball.r) < 0) {
-        score2.score += 1;
-        console.log('Player 2 Score: ' + score2.score);
+        scoreTwo.score += 1;
+        console.log('Player 2 Score: ' + scoreTwo.score);
         initBall(this);
     }
 };
 
 app.reset = function() {
-    let paddleOne = app.getNode("paddleOne");
-    let paddleTwo = app.getNode("paddleTwo");
-    let score1 = this.getNode("scoreOne");
-    let score2 = this.getNode("scoreTwo");
-    let ball = app.getNode("ball");
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
+
     ball.x = canvas.width/2;
     ball.y = canvas.height/2;
 
     paddleOne.y = paddleTwo.y = (canvas.height/2) - (canvas.height * 0.2)/2;
-    score1.score = 0;
-    score2.score = 0;
+    scoreOne.score = 0;
+    scoreTwo.score = 0;
 
     initBall(this);
     app.pause();
 };
 
 app.pause = function() {
-    let ball = app.getNode("ball");
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
 
     if (ball.speed == 0) {
         ball.directionX = ball.previousDirX;
