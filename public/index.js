@@ -25,6 +25,8 @@ app.onInit = function() {
         height : ballHeight,
         color  : 'red',
         r: ballRadius,
+        previousDirX: 0,
+        previousDirY: 0
     });
     initBall(this);
 
@@ -110,17 +112,33 @@ app.onUpdate = function(time) {
     }
 };
 
-app.pause = function() {
-    if(this.idStop) {
-        cancelAnimationFrame(this.idStop);
-        this.idStop = null;
-    } else {
-        this.idStop = window.requestAnimationFrame(this.render.bind(this));
-    }
+app.reset = function() {
+    let paddleOne = app.getNode("paddleOne");
+    let paddleTwo = app.getNode("paddleTwo");
+    let ball = app.getNode("ball");
+    ball.x = canvas.width/2;
+    ball.y = canvas.height/2;
+
+    paddleOne.y = paddleTwo.y = (canvas.height/2) - (canvas.height * 0.2)/2;
+    paddleOne.score = 0;
+    paddleTwo.score = 0;
+
+    initBall(this);
+    app.pause();
 };
 
-app.reset = function() {
-    cancelAnimationFrame(this.idStop);
-    window.requestAnimationFrame(this.render.bind(this));
-    this.onInit();
+app.pause = function() {
+    let ball = app.getNode("ball");
+
+    if (ball.speed == 0) {
+        ball.directionX = ball.previousDirX;
+        ball.directionY = ball.previousDirY;
+        ball.speed = 5;
+    } else if (ball.speed != 0) {
+        ball.previousDirX = ball.directionX;
+        ball.previousDirY = ball.directionY;
+        ball.speed = 0;
+        ball.directionY = 0;
+        ball.directionX = 0;
+    }
 };
