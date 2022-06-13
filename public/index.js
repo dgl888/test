@@ -115,13 +115,15 @@ app.onUpdate = function(time) {
 app.reset = function() {
     let paddleOne = app.getNode("paddleOne");
     let paddleTwo = app.getNode("paddleTwo");
+    let score1 = this.getNode("scoreOne");
+    let score2 = this.getNode("scoreTwo");
     let ball = app.getNode("ball");
     ball.x = canvas.width/2;
     ball.y = canvas.height/2;
 
     paddleOne.y = paddleTwo.y = (canvas.height/2) - (canvas.height * 0.2)/2;
-    paddleOne.score = 0;
-    paddleTwo.score = 0;
+    score1.score = 0;
+    score2.score = 0;
 
     initBall(this);
     app.pause();
