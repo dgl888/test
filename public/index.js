@@ -5,7 +5,6 @@ import { collisionCheck } from './js/collision.js';
 import { initBall } from "./js/initBall.js";
 import { getNodes } from "./js/getNodes.js";
 
-
 app.onInit = function() {
     const paddleWidth = 40;
     const paddleHeight = 200;

@@ -1,12 +1,10 @@
 export function collisionCheck (ball, paddle) {
 
-   //Ball hitbox calculations
     ball.topSide = ball.y - ball.r;
     ball.bottomSide = ball.y + ball.r;
     ball.leftSide = ball.x - ball.r;
     ball.rightSide = ball.x + ball.r;
 
-    //Paddle hitbox calculations
     paddle.topSide = paddle.y;
     paddle.bottomSide = paddle.y + paddle.height;
     paddle.leftSide = paddle.x;
