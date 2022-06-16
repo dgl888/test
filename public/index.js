@@ -2,8 +2,9 @@ import { app } from './js/app.js';
 import { keybindings } from './js/app.js';
 import { resizeWindow } from './js/app.js';
 import { collisionCheck } from './js/collision.js';
-import { initBall } from "./js/initBall.js";
-import { getNodes } from "./js/getNodes.js";
+import { initBall } from './js/initBall.js';
+import { getNodes } from './js/getNodes.js';
+import { playSound } from './js/playSound.js';
 
 app.onInit = function() {
     const paddleWidth = 40;
@@ -76,9 +77,11 @@ app.onUpdate = function(time) {
     ball.y += ball.directionY;
 
     if(collisionCheck(ball, paddle)) {
-        let collissionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);
-        let angle = collissionPoint * (Math.PI/4);
+        let collisionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);
+        let angle = collisionPoint * (Math.PI/4);
         let direction = (ball.x < this.width/2 ) ? 1 : -1;
+
+        playSound("bounce");
 
         ball.directionX = direction * ball.speed * Math.cos(angle);
         ball.directionY = direction * ball.speed * Math.sin(angle);

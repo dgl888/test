@@ -3,6 +3,7 @@ import { resizeWindow } from "./windowSizing.js";
 import { collisionCheck } from "./collision.js";
 import { initBall } from "./initBall.js";
 import { getNodes } from "./getNodes.js";
+import { playSound } from "./playSound.js";
 
 var app = {
 	//initial variables
@@ -78,5 +79,6 @@ window.onload = function(){
 	 resizeWindow,
 	 collisionCheck,
 	 initBall,
-	 getNodes
+	 getNodes,
+	 playSound
  }
