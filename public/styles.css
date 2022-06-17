@@ -3,6 +3,7 @@ body{
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    background-color: #615c5c;
 }
 canvas {
     border: 4px dashed black;

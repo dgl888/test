@@ -1,7 +1,7 @@
 import { app } from './app.js'
 import { getNodes } from './getNodes.js';
 
-export function keepPaddlesWithinCanvas(){
+export function keepPaddlesWithinCanvas(app){
     let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
 
     if(paddleOne.y < 0 ) paddleOne.y = 0;

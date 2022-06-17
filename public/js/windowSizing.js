@@ -1,20 +1,20 @@
 import { app } from './app.js'
 import { getNodes } from './getNodes.js';
 
-const heightMargin = 40;
-const widthMargin = 20;
+const heightMargin = 12;
+const widthMargin = 10;
 
 export function resizeWindow() {
-    let heigth = window.innerHeight;
+    let height = window.innerHeight;
     let width = window.innerWidth;
     let canvas = document.getElementById('canvas');
     let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
 
 
     canvas.width = width - widthMargin;
-    canvas.height = heigth - heightMargin;
+    canvas.height = height - heightMargin;
     app.width = width - widthMargin;
-    app.height = heigth - heightMargin;
+    app.height = height - heightMargin;
 
     paddleTwo.x = app.width - paddleTwo.width;
     ball.x = app.width/2 - ball.width/2;

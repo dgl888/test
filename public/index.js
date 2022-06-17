@@ -77,7 +77,7 @@ app.onUpdate = function(time) {
     let whichSide = ball.x < (this.width / 2);
     let paddle = whichSide ? paddleOne : paddleTwo;
 
-    keepPaddlesWithinCanvas();
+    keepPaddlesWithinCanvas(this);
 
     ball.x += ball.directionX;
     ball.y += ball.directionY;
