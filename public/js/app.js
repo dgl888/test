@@ -4,6 +4,7 @@ import { collisionCheck } from "./collision.js";
 import { initBall } from "./initBall.js";
 import { getNodes } from "./getNodes.js";
 import { playSound } from "./playSound.js";
+import { keepPaddlesWithinCanvas } from "./keepPaddlesWithinCanvas.js";
 
 var app = {
 	//initial variables
@@ -80,5 +81,6 @@ window.onload = function(){
 	 collisionCheck,
 	 initBall,
 	 getNodes,
-	 playSound
+	 playSound,
+	 keepPaddlesWithinCanvas
  }

@@ -5,14 +5,15 @@ import { collisionCheck } from './js/collision.js';
 import { initBall } from './js/initBall.js';
 import { getNodes } from './js/getNodes.js';
 import { playSound } from './js/playSound.js';
+import { keepPaddlesWithinCanvas } from './js/keepPaddlesWithinCanvas.js';
 
 app.onInit = function() {
     const paddleWidth = 40;
     const paddleHeight = 200;
     const paddleY = app.height/2 + paddleHeight/2;
-    const ballWidth = 50;
-    const ballHeight = 50;
-    const ballRadius = 20;
+    const ballWidth = 30;
+    const ballHeight = 30;
+    const ballRadius = 15;
 
     resizeWindow();
 
@@ -76,11 +77,7 @@ app.onUpdate = function(time) {
     let whichSide = ball.x < (this.width / 2);
     let paddle = whichSide ? paddleOne : paddleTwo;
 
-    if(paddleOne.y < 0 ) paddleOne.y = 0;
-    if(paddleOne.y >= this.height - paddleOne.height) paddleOne.y = this.height - paddleOne.height;
-
-    if(paddleTwo.y < 0) paddleTwo.y = 0;
-    if(paddleTwo.y >= this.height - paddleTwo.height) paddleTwo.y = this.height - paddleTwo.height;
+    keepPaddlesWithinCanvas();
 
     ball.x += ball.directionX;
     ball.y += ball.directionY;

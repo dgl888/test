@@ -4,7 +4,7 @@ import { getNodes } from './getNodes.js';
 const heightMargin = 40;
 const widthMargin = 20;
 
-export function resizeWindow(e) {
+export function resizeWindow() {
     let heigth = window.innerHeight;
     let width = window.innerWidth;
     let canvas = document.getElementById('canvas');
