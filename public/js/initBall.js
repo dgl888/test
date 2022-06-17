@@ -3,7 +3,7 @@ import { getNodes } from './getNodes.js';
 
 const minStart = -10;
 const maxStart = 10;
-const ballSpeed = 5;
+const ballSpeed = 20;
 const increaseRange = 5;
 const minRange = -2;
 const maxRange = 2;
