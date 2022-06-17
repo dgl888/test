@@ -8,7 +8,7 @@ export function resizeWindow(e) {
     let heigth = window.innerHeight;
     let width = window.innerWidth;
     let canvas = document.getElementById('canvas');
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
 
 
     canvas.width = width - widthMargin;
@@ -18,4 +18,5 @@ export function resizeWindow(e) {
 
     paddleTwo.x = app.width - paddleTwo.width;
     ball.x = app.width/2 - ball.width/2;
+    halfCourt.x = app.width/2;
 }

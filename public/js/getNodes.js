@@ -6,6 +6,7 @@ export function getNodes() {
     const paddleTwo = app.getNode("paddleTwo");
     const scoreOne = app.getNode("scoreOne");
     const scoreTwo = app.getNode("scoreTwo");
+    const halfCourt = app.getNode("halfCourt");
 
-    return [ball, paddleOne, paddleTwo, scoreOne, scoreTwo];
+    return [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt];
 }

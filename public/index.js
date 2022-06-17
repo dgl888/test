@@ -57,12 +57,21 @@ app.onInit = function() {
         score : 0
     });
 
+    this.nodes.push({
+        id: 'halfCourt',
+        x: canvas.width / 2,
+        y: 0,
+        width: 7,
+        height: canvas.height,
+        color: "black",
+    });
+
     document.addEventListener("keydown", keybindings);
     window.addEventListener("resize", resizeWindow);
 };
 
 app.onUpdate = function(time) {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
 
     let whichSide = ball.x < (this.width / 2);
     let paddle = whichSide ? paddleOne : paddleTwo;
@@ -103,7 +112,7 @@ app.onUpdate = function(time) {
 };
 
 app.reset = function() {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
 
     ball.x = canvas.width/2;
     ball.y = canvas.height/2;
@@ -117,12 +126,12 @@ app.reset = function() {
 };
 
 app.pause = function() {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
 
     if (ball.speed == 0) {
         ball.directionX = ball.previousDirX;
         ball.directionY = ball.previousDirY;
-        ball.speed = 5;
+        ball.speed = 20;
     } else if (ball.speed != 0) {
         ball.previousDirX = ball.directionX;
         ball.previousDirY = ball.directionY;
