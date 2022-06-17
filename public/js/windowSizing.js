@@ -1,4 +1,4 @@
-import {app} from './app.js'
+import { app } from './app.js'
 import { getNodes } from './getNodes.js';
 
 const heightMargin = 40;
@@ -19,4 +19,5 @@ export function resizeWindow(e) {
     paddleTwo.x = app.width - paddleTwo.width;
     ball.x = app.width/2 - ball.width/2;
     halfCourt.x = app.width/2;
+    halfCourt.height = app.height;
 }

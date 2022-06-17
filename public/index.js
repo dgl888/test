@@ -61,7 +61,7 @@ app.onInit = function() {
         id: 'halfCourt',
         x: canvas.width / 2,
         y: 0,
-        width: 7,
+        width: 3,
         height: canvas.height,
         color: "black",
     });
@@ -85,7 +85,7 @@ app.onUpdate = function(time) {
     ball.x += ball.directionX;
     ball.y += ball.directionY;
 
-    if(collisionCheck(ball, paddle)) {
+    if(collisionCheck(paddle)) {
         let collisionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);
         let angle = collisionPoint * (Math.PI/4);
         let direction = (ball.x < this.width/2 ) ? 1 : -1;
@@ -96,15 +96,15 @@ app.onUpdate = function(time) {
         ball.directionY = direction * ball.speed * Math.sin(angle);
     }
 
-    if(ball.y - ball.r <= 0 || ball.y + ball.r >= this.height) {
+    if(ball.y <= 0 || ball.y + ball.height >= canvas.height) {
         ball.directionY = -ball.directionY;
     }
 
-    if((ball.x + ball.r) > this.width) {
+    if((ball.x + ball.width) > this.width) {
         scoreOne.score += 1;
         console.log('Player 1 Score: ' + scoreOne.score);
         initBall(this);
-    } else if((ball.x - ball.r) < 0) {
+    } else if((ball.x) < 0) {
         scoreTwo.score += 1;
         console.log('Player 2 Score: ' + scoreTwo.score);
         initBall(this);

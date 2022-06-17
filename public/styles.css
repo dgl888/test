@@ -3,4 +3,7 @@ body{
     padding: 0;
     border: 0;
     box-sizing: border-box;
-} 
+}
+canvas {
+    border: 4px dashed black;
+}
