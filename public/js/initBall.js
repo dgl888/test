@@ -7,9 +7,11 @@ const maxRange = 2;
 
 export function initBall() {
     let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
-    let ballSpeed = (Math.random() > .5) ? 20 : -20;
-    let ballDirX = ballSpeed/1.1;
-    let ballDirY = Math.random() * ballSpeed;
+    let modifier1 = (Math.random() > .5) ? 1 : -1;
+    let modifier2 = (Math.random() > .5) ? 1 : -1;
+    let ballSpeed = 20;
+    let ballDirX = (ballSpeed/2) * modifier1;
+    let ballDirY = Math.random() * ballSpeed * modifier2;
     let outOfRangeCheck = ballDirX > minRange && ballDirX < maxRange;
     let midWidth = app.width/2 - ball.width/2;
     let midHeight = app.height/2;
