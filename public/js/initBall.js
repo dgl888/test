@@ -6,7 +6,7 @@ const increaseRange = 5;
 const minRange = -2;
 const maxRange = 2;
 
-export function initBall(app) {
+export function initBall() {
     let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
     let ballDirX = Math.random() * ballSpeed;
     let ballDirY = Math.random() * ballSpeed;

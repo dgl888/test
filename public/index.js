@@ -6,6 +6,7 @@ import { initBall } from './js/initBall.js';
 import { getNodes } from './js/getNodes.js';
 import { playSound } from './js/playSound.js';
 import { keepPaddlesWithinCanvas } from './js/keepPaddlesWithinCanvas.js';
+import { updateScore } from './js/updateScore.js';
 
 app.onInit = function() {
     const paddleWidth = 40;
@@ -28,7 +29,7 @@ app.onInit = function() {
         previousDirX: 0,
         previousDirY: 0
     });
-    initBall(this);
+    initBall();
 
     this.nodes.push({
         id : 'paddleOne',
@@ -73,7 +74,6 @@ app.onInit = function() {
 
 app.onUpdate = function(time) {
     let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
-
     let whichSide = ball.x < (this.width / 2);
     let paddle = whichSide ? paddleOne : paddleTwo;
 
@@ -97,15 +97,7 @@ app.onUpdate = function(time) {
         ball.directionY = -ball.directionY;
     }
 
-    if((ball.x + ball.width) > this.width) {
-        scoreOne.score += 1;
-        console.log('Player 1 Score: ' + scoreOne.score);
-        initBall(this);
-    } else if((ball.x) < 0) {
-        scoreTwo.score += 1;
-        console.log('Player 2 Score: ' + scoreTwo.score);
-        initBall(this);
-    }
+    updateScore();
 };
 
 app.reset = function() {
@@ -118,7 +110,7 @@ app.reset = function() {
     scoreOne.score = 0;
     scoreTwo.score = 0;
 
-    initBall(this);
+    initBall();
     app.pause();
 };
 
