@@ -3,7 +3,7 @@ import { getNodes } from './getNodes.js';
 import { initBall } from './initBall.js';
 
 export function updateScore() {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup] = getNodes();
 
     if((ball.x + ball.width) > app.width) {
         scoreOne.score += 1;

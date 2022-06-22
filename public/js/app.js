@@ -6,6 +6,9 @@ import { getNodes } from "./getNodes.js";
 import { playSound } from "./playSound.js";
 import { keepPaddlesWithinCanvas } from "./keepPaddlesWithinCanvas.js";
 import { updateScore } from "./updateScore.js";
+import { activatePowerup } from "./activatePowerup.js";
+import { updatePowerup } from "./updatePowerup.js";
+
 
 var app = {
 	//initial variables
@@ -84,5 +87,7 @@ window.onload = function(){
 	 getNodes,
 	 playSound,
 	 keepPaddlesWithinCanvas,
-	 updateScore
+	 updateScore,
+	 activatePowerup,
+	 updatePowerup
  }

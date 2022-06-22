@@ -2,7 +2,7 @@ import { playSound } from './playSound.js';
 import { getNodes } from './getNodes.js';
 
 export function collisionCheck (paddle) {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup] = getNodes();
 
     ball.topSide = ball.y - ball.r;
     ball.bottomSide = ball.y;

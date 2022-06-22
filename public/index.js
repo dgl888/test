@@ -7,6 +7,7 @@ import { getNodes } from './js/getNodes.js';
 import { playSound } from './js/playSound.js';
 import { keepPaddlesWithinCanvas } from './js/keepPaddlesWithinCanvas.js';
 import { updateScore } from './js/updateScore.js';
+import { activatePowerup } from './js/activatePowerup.js';
 
 app.onInit = function() {
     const paddleWidth = 40;
@@ -15,6 +16,7 @@ app.onInit = function() {
     const ballWidth = 30;
     const ballHeight = 30;
     const ballRadius = 15;
+    const isPowerupActive = false;
 
     resizeWindow();
 
@@ -68,12 +70,23 @@ app.onInit = function() {
         color: "black",
     });
 
+    this.nodes.push({
+        id: 'powerup',
+        x: 10000,
+        y: 10000,
+        width: 0,
+        height: 0,
+        active: isPowerupActive,
+    });
+
     document.addEventListener("keydown", keybindings);
     window.addEventListener("resize", resizeWindow);
+
+    app.pause();
 };
 
 app.onUpdate = function(time) {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup]= getNodes();
     let whichSide = ball.x < (this.width / 2);
     let paddle = whichSide ? paddleOne : paddleTwo;
 
@@ -81,6 +94,8 @@ app.onUpdate = function(time) {
 
     ball.x += ball.directionX;
     ball.y += ball.directionY;
+
+    activatePowerup();
 
     if(collisionCheck(paddle)) {
         let collisionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);
@@ -101,7 +116,7 @@ app.onUpdate = function(time) {
 };
 
 app.reset = function() {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup] = getNodes();
 
     ball.x = canvas.width/2;
     ball.y = canvas.height/2;
@@ -115,7 +130,7 @@ app.reset = function() {
 };
 
 app.pause = function() {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup] = getNodes();
 
     if (ball.speed == 0) {
         ball.directionX = ball.previousDirX;

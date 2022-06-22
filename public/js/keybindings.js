@@ -5,7 +5,7 @@ import { playSound } from './playSound.js';
 const paddleDisplacement = 50;
 
 export let keybindings = function (e) {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup] = getNodes();
 
     if(e.keycode === 87 || e.which == 87) {
         paddleOne.y += -paddleDisplacement;

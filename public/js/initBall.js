@@ -6,7 +6,7 @@ const minRange = -2;
 const maxRange = 2;
 
 export function initBall() {
-    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt] = getNodes();
+    let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup] = getNodes();
     let modifier1 = (Math.random() > .5) ? 1 : -1;
     let modifier2 = (Math.random() > .5) ? 1 : -1;
     let ballSpeed = 20;
