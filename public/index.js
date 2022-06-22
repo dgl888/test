@@ -7,10 +7,6 @@ import { getNodes } from './js/getNodes.js';
 import { playSound } from './js/playSound.js';
 import { keepPaddlesWithinCanvas } from './js/keepPaddlesWithinCanvas.js';
 import { updateScore } from './js/updateScore.js';
-// import { activatePowerup } from './js/activatePowerup.js';
-// import { updatePowerup } from './js/updatePowerup.js';
-// import { hitPowerup } from './js/hitPowerup.js';
-// import { doPowerupAbility } from './js/doPowerupAbility.js';
 import { resetNodes } from './js/resetNodes.js';
 import { activatePowerup, updatePowerup, hitPowerup, doPowerupAbility } from './js/powerupMethods.js';
 
