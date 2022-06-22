@@ -8,6 +8,7 @@ import { keepPaddlesWithinCanvas } from "./keepPaddlesWithinCanvas.js";
 import { updateScore } from "./updateScore.js";
 import { activatePowerup } from "./activatePowerup.js";
 import { updatePowerup } from "./updatePowerup.js";
+import { hitPowerup } from "./hitPowerup.js";
 
 
 var app = {
@@ -89,5 +90,6 @@ window.onload = function(){
 	 keepPaddlesWithinCanvas,
 	 updateScore,
 	 activatePowerup,
-	 updatePowerup
+	 updatePowerup,
+	 hitPowerup
  }

@@ -8,6 +8,8 @@ import { playSound } from './js/playSound.js';
 import { keepPaddlesWithinCanvas } from './js/keepPaddlesWithinCanvas.js';
 import { updateScore } from './js/updateScore.js';
 import { activatePowerup } from './js/activatePowerup.js';
+import { updatePowerup } from './js/updatePowerup.js';
+import { hitPowerup } from './js/hitPowerup.js';
 
 app.onInit = function() {
     const paddleWidth = 40;
@@ -96,6 +98,10 @@ app.onUpdate = function(time) {
     ball.y += ball.directionY;
 
     activatePowerup();
+    if(hitPowerup()) {
+        updatePowerup();
+        console.log("Powerup Hit!");
+    }
 
     if(collisionCheck(paddle)) {
         let collisionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);

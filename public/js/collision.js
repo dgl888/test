@@ -1,4 +1,3 @@
-import { playSound } from './playSound.js';
 import { getNodes } from './getNodes.js';
 
 export function collisionCheck (paddle) {
