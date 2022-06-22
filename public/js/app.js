@@ -10,6 +10,7 @@ import { activatePowerup } from "./activatePowerup.js";
 import { updatePowerup } from "./updatePowerup.js";
 import { hitPowerup } from "./hitPowerup.js";
 import { doPowerupAbility } from "./doPowerupAbility.js";
+import { resetNodes } from "./resetNodes.js";
 
 
 var app = {
@@ -93,5 +94,6 @@ window.onload = function(){
 	 activatePowerup,
 	 updatePowerup,
 	 hitPowerup,
-	 doPowerupAbility
+	 doPowerupAbility,
+	 resetNodes
  }

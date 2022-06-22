@@ -11,9 +11,10 @@ import { activatePowerup } from './js/activatePowerup.js';
 import { updatePowerup } from './js/updatePowerup.js';
 import { hitPowerup } from './js/hitPowerup.js';
 import { doPowerupAbility } from './js/doPowerupAbility.js';
+import { resetNodes } from './js/resetNodes.js';
 
 app.onInit = function() {
-    const paddleWidth = 40;
+    const paddleWidth = 20;
     const paddleHeight = 200;
     const paddleY = app.height/2 + paddleHeight/2;
     const ballWidth = 30;
@@ -81,7 +82,8 @@ app.onInit = function() {
         height: 0,
         visible: isPowerupVisible,
         isActive: false,
-        timeActive: 0
+        timeActive: 0,
+        color: "blue",
     });
 
     document.addEventListener("keydown", keybindings);
@@ -105,21 +107,17 @@ app.onUpdate = function(time) {
         updatePowerup();
     }
 
-
     if(powerup.active == true && powerup.timeActive == 0){
         powerup.timeActive++;
         doPowerupAbility('IncreasePaddleSize', paddle);
     } else if(powerup.active == true && powerup.timeActive < 800){
-        console.log(powerup.timeActive);
         powerup.timeActive++;
     } else if (powerup.active == true && powerup.timeActive >= 800){
-        console.log("Deactivate");
         powerup.timeActive = undefined;
         powerup.active = false;
         powerup.visible = false;
+        resetNodes();
     }
-
-
 
     if(collisionCheck(paddle)) {
         let collisionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);
