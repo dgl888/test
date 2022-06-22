@@ -18,7 +18,7 @@ app.onInit = function() {
     const ballWidth = 30;
     const ballHeight = 30;
     const ballRadius = 15;
-    const isPowerupActive = false;
+    const isPowerupVisible = false;
 
     resizeWindow();
 
@@ -78,7 +78,9 @@ app.onInit = function() {
         y: 10000,
         width: 0,
         height: 0,
-        active: isPowerupActive,
+        visible: isPowerupVisible,
+        isActive: false,
+        timeActive: 0
     });
 
     document.addEventListener("keydown", keybindings);
@@ -100,8 +102,18 @@ app.onUpdate = function(time) {
     activatePowerup();
     if(hitPowerup()) {
         updatePowerup();
-        console.log("Powerup Hit!");
     }
+
+    if(powerup.active == true && powerup.timeActive < 400){
+        console.log(powerup.timeActive);
+        powerup.timeActive++;
+    } else if (powerup.active == true && powerup.timeActive >= 400){
+        console.log(powerup.timeActive);
+        powerup.timeActive = undefined;
+        powerup.active = false;
+        powerup.visible = false;
+    }
+
 
     if(collisionCheck(paddle)) {
         let collisionPoint = (ball.y - (paddle.y + paddle.height/2)) / (paddle.height/2);
