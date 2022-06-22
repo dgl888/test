@@ -6,11 +6,12 @@ import { getNodes } from "./getNodes.js";
 import { playSound } from "./playSound.js";
 import { keepPaddlesWithinCanvas } from "./keepPaddlesWithinCanvas.js";
 import { updateScore } from "./updateScore.js";
-import { activatePowerup } from "./activatePowerup.js";
-import { updatePowerup } from "./updatePowerup.js";
-import { hitPowerup } from "./hitPowerup.js";
-import { doPowerupAbility } from "./doPowerupAbility.js";
+// import { activatePowerup } from "./activatePowerup.js";
+// import { updatePowerup } from "./updatePowerup.js";
+// import { hitPowerup } from "./hitPowerup.js";
+// import { doPowerupAbility } from "./doPowerupAbility.js";
 import { resetNodes } from "./resetNodes.js";
+import { activatePowerup, updatePowerup, hitPowerup, doPowerupAbility } from "./powerupMethods.js";
 
 
 var app = {
