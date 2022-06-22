@@ -9,6 +9,7 @@ import { updateScore } from "./updateScore.js";
 import { activatePowerup } from "./activatePowerup.js";
 import { updatePowerup } from "./updatePowerup.js";
 import { hitPowerup } from "./hitPowerup.js";
+import { doPowerupAbility } from "./doPowerupAbility.js";
 
 
 var app = {
@@ -91,5 +92,6 @@ window.onload = function(){
 	 updateScore,
 	 activatePowerup,
 	 updatePowerup,
-	 hitPowerup
+	 hitPowerup,
+	 doPowerupAbility
  }

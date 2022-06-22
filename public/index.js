@@ -10,6 +10,7 @@ import { updateScore } from './js/updateScore.js';
 import { activatePowerup } from './js/activatePowerup.js';
 import { updatePowerup } from './js/updatePowerup.js';
 import { hitPowerup } from './js/hitPowerup.js';
+import { doPowerupAbility } from './js/doPowerupAbility.js';
 
 app.onInit = function() {
     const paddleWidth = 40;
@@ -104,15 +105,20 @@ app.onUpdate = function(time) {
         updatePowerup();
     }
 
-    if(powerup.active == true && powerup.timeActive < 400){
+
+    if(powerup.active == true && powerup.timeActive == 0){
+        powerup.timeActive++;
+        doPowerupAbility('IncreasePaddleSize', paddle);
+    } else if(powerup.active == true && powerup.timeActive < 800){
         console.log(powerup.timeActive);
         powerup.timeActive++;
-    } else if (powerup.active == true && powerup.timeActive >= 400){
-        console.log(powerup.timeActive);
+    } else if (powerup.active == true && powerup.timeActive >= 800){
+        console.log("Deactivate");
         powerup.timeActive = undefined;
         powerup.active = false;
         powerup.visible = false;
     }
+
 
 
     if(collisionCheck(paddle)) {
