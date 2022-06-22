@@ -5,10 +5,10 @@ export function updatePowerup () {
     let [ball, paddleOne, paddleTwo, scoreOne, scoreTwo, halfCourt, powerup] = getNodes();
 
     if((powerup.active == false)) {
-        powerup.x = app.width/3;
-        powerup.y = app.height/3;
+        powerup.x = ((Math.random() - 0.5) * app.width/1.5) + app.width/2;
+        powerup.y = ((Math.random() - 0.5) * app.height/2) + (app.height/2 + powerup.height);
         powerup.width = 10;
-        powerup.height = app.height/4;
+        powerup.height = app.height/5;
 
         powerup.topSide = powerup.y;
         powerup.bottomSide = powerup.height + powerup.y;
