@@ -145,6 +145,11 @@ app.reset = function() {
     scoreOne.score = 0;
     scoreTwo.score = 0;
 
+    powerup.timeActive = undefined;
+    powerup.active = false;
+    powerup.visible = false;
+    resetNodes();
+
     initBall();
     app.pause();
 };
